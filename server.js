@@ -1,11 +1,11 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const path = require('path');
+const mongoose = require('mongoose')
+require('dotenv');
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-
-app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -19,8 +19,9 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitnesstracker"
   useFindAndModify: false
 });
 
+
 // routes
-app.use(require("./routes/api.js"));
+app.use(require('./routes/index'));
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
