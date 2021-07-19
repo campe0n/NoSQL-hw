@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
-const db = require('../models/exercise.js');
+const db = require('../models/workout');
 
 mongoose.connect('mongodb://localhost/fitnesstracker', {
   useNewUrlParser: true,
+  useFindAndModify: false,
   useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false
 });
 
 const workoutSeed = [
@@ -126,8 +125,8 @@ const workoutSeed = [
   },
 ];
 
-db.fitnesstracker.deleteMany({})
-  .then(() => db.fitnesstracker.collection.insertMany(workoutSeed))
+db.deleteMany({})
+  .then(() => db.insertMany(workoutSeed))
   .then((data) => {
     console.log(data.result.n + ' records inserted!');
     process.exit(0);
