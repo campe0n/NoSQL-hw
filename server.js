@@ -8,8 +8,6 @@ const PORT = process.env.PORT;
 
 const app = express();
 
-app.set('views', path.resolve(__dirname, "public"))
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
