@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Workout = require('../models/workout');
+const db = require('../models');
 const dotenv = require('dotenv');
 dotenv.config({path:'config.env'})
 
@@ -128,8 +128,8 @@ const workoutSeed = [
   },
 ];
 
-Workout.deleteMany({})
-  .then(() => Workout.insertMany(workoutSeed))
+db.Exercise.deleteMany({})
+  .then(() => db.Exercise.insertMany(workoutSeed))
   .then((data) => {
     console.log(data.result.n + ' records inserted!');
     process.exit(0);
