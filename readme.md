@@ -10,6 +10,8 @@ Fitness tracker is an app that allows users to create workand maintain workouts.
 
 [Description](#description)
 
+[Screenshot](#screenshot)
+
 [Installation Instructions](#installation-instructions)
 
 [Usage Information](#usage-information)
@@ -19,6 +21,10 @@ Fitness tracker is an app that allows users to create workand maintain workouts.
 [Test Instructions](#test-instructions)
 
 [Questions](#questions)
+
+## Screenshot
+
+![Fitness Tracker Screenshot](/public/assets/images/Capture.JPG)
 
 ## Installation Instructions
 
