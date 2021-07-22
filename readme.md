@@ -12,6 +12,8 @@ Fitness tracker is an app that allows users to create workand maintain workouts.
 
 [Screenshot](#screenshot)
 
+[Link](#Link)
+
 [Installation Instructions](#installation-instructions)
 
 [Usage Information](#usage-information)
@@ -25,6 +27,10 @@ Fitness tracker is an app that allows users to create workand maintain workouts.
 ## Screenshot
 
 ![Fitness Tracker Screenshot](/public/assets/images/Capture.JPG)
+
+## Link
+
+<a href="https://hidden-headland-51318.herokuapp.com/" target="_blank">Fitness Tracker</a>
 
 ## Installation Instructions
 
