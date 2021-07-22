@@ -4,7 +4,7 @@ const Workout = require('../models/workout');
 
 router.get('/workouts', async (req, res) => {
     try {
-        const workout = await Workout.find({}).populate("exercise");
+        const workout = await Workout.find({}).populate("Exercise");
         res.send(workout)
     } catch (err) {
         console.log(err);
@@ -33,29 +33,23 @@ router.post('/workouts', async ({ body }, res) => {
 
 router.put('/workouts/:id', async (req, res) => {
     try {
-        const newExercise = await Exercise.create(req.body);
+        const exercise = await Exercise.create(req.body);
 
-        newExercise.aggregate([
-            {$match: {}},
-            {$group: {total: {$sum: "$duration"}}}
-        ])
-    } catch (err) {
-        res.send(err);
+        const updatedWorkout = await Workout.findByIdAndUpdate(req.params.id, exercise);
+
+        res.send(updatedWorkout);
+    } catch(err) {
+        res.send(err)
     }
 })
 
 router.get('/workouts/range', async (req, res) => {
     try {
-        const newExercise = await Exercise.create(req.body);
+        const range = await Workout.find().populate('Exercise')
 
-        const displayExercise = newExercise.aggregate([
-            {$match: {}},
-            {$group: {total: {$sum: "$duration"}}}
-        ])
-
-        res.send(displayExercise);
+        res.send(range);
     } catch (err) {
-        res.send(err);
+        res.send(err)
     }
 })
 
