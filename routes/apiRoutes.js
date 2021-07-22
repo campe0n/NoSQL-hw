@@ -24,7 +24,6 @@ router.post('/workouts', async ({ body }, res) => {
     try {
         const workout = await Workout.create(body);
         
-        workout.save();
         res.send(workout);
     } catch (err) {
         res.send(err);
@@ -33,10 +32,9 @@ router.post('/workouts', async ({ body }, res) => {
 
 router.put('/workouts/:id', async (req, res) => {
     try {
-        const exercise = await Exercise.create(req.body);
-
-        const updatedWorkout = await Workout.findByIdAndUpdate(req.params.id, exercise);
-
+        const newExercise = await Exercise.create(req.body);
+        const updatedWorkout = await Workout.findOneAndUpdate({ _id: req.params.id}, { $set: { exercises: newExercise}}, { new: true});
+        
         res.send(updatedWorkout);
     } catch(err) {
         res.send(err)
@@ -45,7 +43,9 @@ router.put('/workouts/:id', async (req, res) => {
 
 router.get('/workouts/range', async (req, res) => {
     try {
-        const range = await Workout.find().populate('Exercise')
+        const range = await Exercise.aggregate([
+            { $set: { totalDuration: { $sum: "$duration"}}}
+        ])
 
         res.send(range);
     } catch (err) {
